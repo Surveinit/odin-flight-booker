@@ -1,4 +1,5 @@
 class Airport < ApplicationRecord
+  # Associations
   has_many(
     :departing_flights,
     class_name: "Flight",
@@ -10,4 +11,7 @@ class Airport < ApplicationRecord
     class_name: "Flight",
     foreign_key: "arrival_airport_id"
   )
+
+  # Validations
+  validates :airport_code, uniqueness: { case_sensitive: false }
 end
