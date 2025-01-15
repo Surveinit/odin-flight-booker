@@ -1,24 +1,48 @@
-<%# Demo %>
 <h1>✈️ Flights</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Departure Airport</th>
-      <th>Arrival Airport</th>
-      <th>Start datetime</th>
-      <th>Flight Duration</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @flights.each do |flight| %>
-      <tr>
-        <td><%= flight.departure_airport_id %></td>
-        <td><%= flight.arrival_airport_id %></td>
-        <td><%= flight.start_datetime %></td>
-        <td><%= flight.duration %></td>
-      </tr>
+<%= form_with(url: flights_path, method: :get, local: true) do %>
+  <p>Departure from: </p>
+  <select name="flight[departure_airport_id]">
+    <% @airports.each do |airport| %>
+      <option value="<%= airport.id%>"><%= airport.airport_code %></option> 
     <% end %>
-  </tbody>
-</table>
+  </select>
+
+  <p>Arrival to: </p>
+  <select name="flight[arrival_airport_id]">
+    <% @airports.each do |airport| %>
+      <option value="<%= airport.id%>"><%= airport.airport_code %></option> 
+    <% end %>
+  </select>
+
+  <p>Travelling on: </p>
+  <select name="flight[start_datetime]">
+    <% @flights.pluck(:start_datetime).uniq.each do |datetime| %>
+      <option value="<%= datetime %>"><%= datetime %></option>
+    <% end %>
+  </select>
+
+  <p>Passengers: </p>
+  <select name="passenger_count">
+    <option value="1">1</option> 
+    <option value="2">2</option> 
+    <option value="3">3</option> 
+    <option value="4">4</option> 
+  </select>
+
+  <%= submit_tag "Search" %>
+<% end %>
+
+<h2>Available flights: </h2>
+<% if @flights.any? %>
+  <% @flights.each do |flight| %>
+    <p>
+      From: <%= flight.departure_airport.airport_code %> ->
+      To: <%= flight.arrival_airport.airport_code %><br>
+      When: <%= flight.start_datetime %><br>
+      Duration: <%= flight.duration %> hrs 
+    </p>
+  <% end %>
+<% else %>
+  <p>No flights available for the selected criteria.</p>
+<% end %>
