@@ -18,14 +18,14 @@ Flight.create!(
     {
       departure_airport: bom,
       arrival_airport: blr,
-      start_datetime: DateTime.now + 2.days,
+      start_datetime: DateTime.parse((DateTime.now + 2.days).to_s),
       duration: 3
     },
 
     {
       departure_airport: pnq,
       arrival_airport: bom,
-      start_datetime: DateTime.now + 3.days,
+      start_datetime: DateTime.parse((DateTime.now + 3.days).to_s),
       duration: 2
     }
   ]
