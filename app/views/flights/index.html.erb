@@ -40,7 +40,7 @@
     <% @flights.each do |flight| %>
       <div>
         <label>
-          <%= radio_button_tag 'selected_flight', flight.id %>
+          <%= radio_button_tag 'flight_id', flight.id %>
           From: <%= flight.departure_airport.airport_code %> ->
           To: <%= flight.arrival_airport.airport_code %><br>
           When: <%= flight.start_datetime %><br>
