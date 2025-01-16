@@ -16,6 +16,8 @@ class FlightsController < ApplicationController
         @flights = @flights.where("start_datetime >= ?", start_datetime)
       end
     end
+
+    @passenger_count = params[:passenger_count]
   end
 
   # params.require(:recipe).permit(:title, :ingredients, :instructions, :image)
