@@ -11,4 +11,6 @@ class Flight < ApplicationRecord
     class_name: "Airport",
     foreign_key: "arrival_airport_id"
   )
+
+  has_many :Bookings
 end
