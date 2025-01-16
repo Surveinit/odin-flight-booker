@@ -20,7 +20,6 @@ class FlightsController < ApplicationController
     @passenger_count = params[:passenger_count]
   end
 
-  # params.require(:recipe).permit(:title, :ingredients, :instructions, :image)
   def flight_params
     params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :start_datetime, :passenger_count)
   end
