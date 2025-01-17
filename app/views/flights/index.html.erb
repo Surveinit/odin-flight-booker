@@ -35,7 +35,7 @@
 
 
 <%= form_with(url: "/bookings/new", method: :get, local: true) do %>
-  <h2>Available flights: </h2>
+  <h4>Available flights: </h4>
   <% if @flights.present? %>
     <% @flights.each do |flight| %>
       <div>

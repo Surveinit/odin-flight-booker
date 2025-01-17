@@ -1,4 +1,4 @@
-<h1>Bookings#new</h1>
+<h1>🧳 Enter Passenger Details</h1>
 <p>
 <% if @flight.present? %>
   From: <%= @flight.departure_airport.airport_code %> ->
@@ -9,11 +9,10 @@
 </p>
 
 <%= form_with(model: @booking, local: true) do |f| %>
-  <h2>Passenger Details</h2>
   <%= f.hidden_field :flight_id, value: @flight.id %>
   <% @booking.passengers.each_with_index do |passenger, index| %>
     <div>
-      <h3>Passenger <%= index + 1 %></h3>
+      <h4>Passenger <%= index + 1 %></h4>
       <%= f.fields_for :passengers, passenger do |p| %>
         <div>
           <%= p.label :name, "Name" %>
