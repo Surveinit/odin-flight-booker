@@ -12,5 +12,5 @@ class Flight < ApplicationRecord
     foreign_key: "arrival_airport_id"
   )
 
-  has_many :Bookings
+  has_many :Bookings, dependent: :destroy
 end

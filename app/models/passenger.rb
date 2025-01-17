@@ -1,3 +1,3 @@
 class Passenger < ApplicationRecord
-  has_one :Booking
+  belongs_to :Booking
 end
