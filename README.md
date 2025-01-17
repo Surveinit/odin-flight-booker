@@ -1,4 +1,4 @@
-# ✈️Odin Flight Booker
+# ✈️ Odin Flight Booker
 
 Odin Flight Booker is a simple flight booking web application developed as part of The Odin Project. This application allows users to search for available flights, book flights, and view their booking details, all while practicing core web development skills like Ruby on Rails, ActiveRecord, and form handling.
 
@@ -45,7 +45,7 @@ To run this project locally, follow the steps below:
     http://localhost:3000
     ```
 
-### Usage
+### 📚 Usage
 
 1. Search for flights:
     - Select departure and arrival airports, travel date, and the number of passengers to search for available flights.
