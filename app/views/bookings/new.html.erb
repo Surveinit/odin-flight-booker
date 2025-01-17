@@ -1,7 +1,31 @@
 <h1>Bookings#new</h1>
 <p>
+<% if @flight.present? %>
   From: <%= @flight.departure_airport.airport_code %> ->
   To: <%= @flight.arrival_airport.airport_code %><br>
   When: <%= @flight.start_datetime %><br>
   Duration: <%= @flight.duration %> hrs 
+<% end %>
 </p>
+
+<%= form_with(model: @booking, local: true) do |f| %>
+  <h2>Passenger Details</h2>
+  <%= f.hidden_field :flight_id, value: @flight.id %>
+  <% @booking.passengers.each_with_index do |passenger, index| %>
+    <div>
+      <h3>Passenger <%= index + 1 %></h3>
+      <%= f.fields_for :passengers, passenger do |p| %>
+        <div>
+          <%= p.label :name, "Name" %>
+          <%= p.text_field :name %>
+        </div>
+        <div>
+          <%= p.label :email, "Email" %>
+          <%= p.email_field :email %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= f.submit "Create Booking" %>
+<% end %>

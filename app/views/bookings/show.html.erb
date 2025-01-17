@@ -1,0 +1,21 @@
+<h2>Booking show page</h2>
+
+<p>
+<% if @flight.present? %>
+  From: <%= @flight.departure_airport.airport_code %> ->
+  To: <%= @flight.arrival_airport.airport_code %><br>
+  When: <%= @flight.start_datetime %><br>
+  Duration: <%= @flight.duration %> hrs 
+<% end %>
+
+</p>
+
+<h2>Passengers</h2>
+<ol>
+  <% @booking.passengers.each do |passenger| %>
+    <li>
+      <strong>Name:</strong> <%= passenger.name %><br>
+      <strong>Email:</strong> <%= passenger.email %>
+    </li>
+  <% end %>
+</ol>

@@ -20,6 +20,7 @@ class FlightsController < ApplicationController
     @passenger_count = params[:passenger_count]
   end
 
+  private
   def flight_params
     params.require(:flight).permit(:departure_airport_id, :arrival_airport_id, :start_datetime, :passenger_count)
   end
