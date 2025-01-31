@@ -1,0 +1,4 @@
+Welcome to example.com, <%= @user.name %>
+===============================================
+
+You have successfully Booked the flight. Thanks for using our Service.
