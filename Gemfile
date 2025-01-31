@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# Display email in browser
+gem "letter_opener", group: :development
 # Better table visualizer for DB
 gem "hirb"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
