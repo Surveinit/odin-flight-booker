@@ -11,6 +11,10 @@ class BookingsController < ApplicationController
     @flight = Flight.find(params[:booking][:flight_id])
     @booking = Booking.new(booking_params)
     if @booking.save
+      @booking.passengers.each do |passenger|
+        PassengerMailer.with(passenger: passenger).booking_successful.deliver_later
+      end
+
       redirect_to(@booking, notice: "Booking was successfully done.")
     else
       # Log the errors for debugging
